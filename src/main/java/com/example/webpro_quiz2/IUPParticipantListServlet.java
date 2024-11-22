@@ -15,7 +15,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-// Servlet to handle participant-related operations
 @WebServlet("/IUPParticipantList")
 public class IUPParticipantListServlet extends HttpServlet {
 
@@ -23,7 +22,6 @@ public class IUPParticipantListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Participant> participants = new ArrayList<>();
 
-        // Database connection and query execution
         try (Connection conn = DatabaseConnection.getConnection()) {
             System.out.println("Database connection successful!");
 
@@ -35,12 +33,12 @@ public class IUPParticipantListServlet extends HttpServlet {
             try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sqlQuery)) {
                 while (rs.next()) {
                     participants.add(new Participant(
-                            rs.getInt("participant_id"),      // Participant ID
-                            rs.getString("participant_name"), // Participant Name
-                            rs.getString("email"),            // Email
-                            rs.getString("phone"),            // Phone
-                            rs.getInt("competition_id"),      // Competition ID
-                            rs.getString("competition_name")  // Competition Name
+                            rs.getInt("participant_id"),      
+                            rs.getString("participant_name"), 
+                            rs.getString("email"),           
+                            rs.getString("phone"),           
+                            rs.getInt("competition_id"),      
+                            rs.getString("competition_name")  
                     ));
                 }
             }
@@ -50,14 +48,12 @@ public class IUPParticipantListServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        // Debugging: Print fetched participants
         System.out.println("Participants fetched:");
         for (Participant p : participants) {
             System.out.printf("ID: %d, Name: %s, Email: %s, Competition: %s%n",
                     p.getId(), p.getName(), p.getEmail(), p.getCompetitionName());
         }
 
-        // Set participants as a request attribute and forward to JSP
         request.setAttribute("participants", participants);
         RequestDispatcher dispatcher = request.getRequestDispatcher("IUPParticipantList.jsp");
         dispatcher.forward(request, response);

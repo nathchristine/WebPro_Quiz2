@@ -10,7 +10,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
-
+    <%@ page import="java.util.List, java.util.Map" %>
+    <%@ page import="com.example.webpro_quiz2.Competition, com.example.webpro_quiz2.Result, com.example.webpro_quiz2.Participant" %>
     <style>
         body {
             font-family: 'Fredoka One', sans-serif;
@@ -50,6 +51,12 @@
             margin-left: 30px;
             margin-right: 30px;
             margin-top: 20px;
+        }
+        .navbar-nav {
+            align-items: center;
+        }
+        .nav-item-gap {
+            margin-right: 20px;
         }
         .list-group-item {
             display: flex;
@@ -110,54 +117,71 @@
         <div class="collapse navbar-collapse align-right" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.jsp">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="IUPParticipantList.jsp">Participant</a>
+                    <a class="nav-link" href="IUPParticipantList">Participant</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="IUPCompeList.jsp">Competition</a>
+                    <a class="nav-link" href="IUPCompeList">Competition</a>
+                </li>
+                <li class="nav-item nav-item-gap">
+                    <a class="nav-link" href="IUPResultList">Result</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="login.jsp" class="btn login-btn me-2" role="button">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="IUPResultList.jsp">Result</a>
+                    <a href="register.jsp" class="btn register-btn" role="button">Register</a>
                 </li>
             </ul>
         </div>
+
     </div>
 </nav>
+
 
 <div class="container text-center">
     <h1>RESULT LIST</h1>
 </div>
 
 <div class="container">
-    <% String successMessage = (String) request.getAttribute("success"); %>
-    <% if (successMessage != null) { %>
-    <div id="success-message" class="alert alert-success text-center">
-        <%= successMessage %>
-    </div>
-    <% } %>
-</div>
-
-<div class="add-result-container">
-    <a href="addResult.jsp" class="btn btn-add">
-        Add Result <i class="fa-solid fa-user-plus"></i>
-    </a>
-</div>
-
-<div class="container">
     <div class="row">
         <div class="col-4">
             <div class="list-group">
-                <% for (Competition c : competitions) { %>
-                <a class="list-group-item list-group-item-action" href="#list-item-<%= c.getId() %>"><%= c.getName() %></a>
-                <% } %>
+                <%
+                    List<Competition> competitions = (List<Competition>) request.getAttribute("competitions");
+                    if (competitions == null || competitions.isEmpty()) {
+                %>
+                <p>No competitions available.</p>
+                <%
+                } else {
+                    for (Competition c : competitions) {
+                %>
+                <a class="list-group-item list-group-item-action" href="#list-item-<%= c.getId() %>">
+                    <%= c.getName() %>
+                </a>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
 
         <div class="col-8">
             <div class="scrollspy-example">
-                <% for (Competition c : competitions) { %>
+                <%
+                    List<Result> results = (List<Result>) request.getAttribute("results");
+                    Map<Integer, Participant> participants = (Map<Integer, Participant>) request.getAttribute("participants");
+
+                    if (results == null || participants == null) {
+                %>
+                <p>No results available.</p>
+                <%
+                } else {
+                    for (Competition c : competitions) {
+                %>
                 <h4 id="list-item-<%= c.getId() %>"><%= c.getName() %></h4>
                 <ul class="list-group mb-3">
                     <%
@@ -181,11 +205,15 @@
                     <li class="list-group-item text-muted">No participants found for this competition</li>
                     <% } %>
                 </ul>
-                <% } %>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

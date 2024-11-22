@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Servlet to handle competition-related operations
-@WebServlet("/CompetitionServlet")
-public class IUPCompeServlet extends HttpServlet {
+@WebServlet("/IUPCompeList")
+public class IUPCompeListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

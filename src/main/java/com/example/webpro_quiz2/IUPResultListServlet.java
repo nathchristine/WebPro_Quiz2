@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// Servlet for handling competition data
 @WebServlet("/IUPResultListServlet")
 public class IUPResultListServlet extends HttpServlet {
     @Override
@@ -25,7 +24,6 @@ public class IUPResultListServlet extends HttpServlet {
         try (Connection conn = DatabaseConnection.getConnection()) {
             System.out.println("Database connection successful!");
 
-            // Fetch competitions
             String sqlCompetition = "SELECT * FROM competition";
             try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sqlCompetition)) {
                 while (rs.next()) {
@@ -38,7 +36,6 @@ public class IUPResultListServlet extends HttpServlet {
                 }
             }
 
-            // Fetch table count (Fixed SQL syntax)
             String sqlTableCount = "SELECT COUNT(*) AS table_count FROM information_schema.tables WHERE table_schema = 'iup_competitions'";
             try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sqlTableCount)) {
                 if (rs.next()) {
@@ -47,7 +44,6 @@ public class IUPResultListServlet extends HttpServlet {
                 }
             }
 
-            // Fetch results (Removed unnecessary semicolon)
             String sqlResult = "SELECT * FROM results";
             try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sqlResult)) {
                 while (rs.next()) {
@@ -60,7 +56,6 @@ public class IUPResultListServlet extends HttpServlet {
                 }
             }
 
-            // Fetch participants with LEFT JOIN (Handle potential nulls for competitionName)
             String sqlParticipant = "SELECT p.id, p.name, p.email, p.phone, p.competition_id, c.name AS competitionName " +
                     "FROM participants p " +
                     "LEFT JOIN competition c ON p.competition_id = c.id";
@@ -82,17 +77,14 @@ public class IUPResultListServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        // Debugging: Print fetched data
         System.out.println("Competitions: " + competitions.size());
         System.out.println("Results: " + results.size());
         System.out.println("Participants: " + participants.size());
 
-        // Set attributes for the JSP
         request.setAttribute("competitions", competitions);
         request.setAttribute("results", results);
         request.setAttribute("participants", participants);
 
-        // Forward to JSP
         RequestDispatcher dispatcher = request.getRequestDispatcher("IUPResultList.jsp");
         dispatcher.forward(request, response);
     }

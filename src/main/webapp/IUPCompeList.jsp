@@ -33,16 +33,15 @@
       margin-bottom: 20px;
     }
 
-    .btn-back i {
-      margin-right: 10px; /* Add space between the icon and text */
+    .btn-back i{
+      margin-right: 10px;
     }
 
-    /* Center align the Back button */
     .back-result-container {
       display: flex;
       justify-content: flex-start;
       max-width: 600px;
-      margin: 20px auto 0 auto; /* Center it horizontally and add margin-top */
+      margin: 20px auto 0 auto; 
     }
 
     .form-container {
@@ -82,10 +81,9 @@
       background-color: #4cae4c;
     }
 
-    /* Right alignment for the Add button */
     .add-competition-container {
       display: flex;
-      justify-content: flex-end; /* Align to the right */
+      justify-content: flex-end; 
       margin-right: 30px;
     }
   </style>

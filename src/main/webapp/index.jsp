@@ -12,47 +12,46 @@
         }
         .navbar-nav .nav-link {
             font-family: 'Fredoka One', sans-serif;
-            text-transform: uppercase; /* Make navbar links uppercase */
+            text-transform: uppercase; 
         }
         .navbar-brand {
-            text-transform: uppercase; /* Make navbar brand uppercase */
-            font-size: 1.5rem; /* Adjust brand text size */
+            text-transform: uppercase; 
+            font-size: 1.5rem; 
         }
         .login-btn {
-            background-color: #A8DADC; /* Pastel teal color for login */
+            background-color: #A8DADC; 
             border-color: #A8DADC;
-            text-transform: uppercase; /* Make Login button text uppercase */
+            text-transform: uppercase; 
             padding: 10px 20px;
-            color: #000; /* Make text black */
-            border-radius: 10px; /* Rounded button */
+            color: #000; 
+            border-radius: 10px; 
             font-size: 1.1rem;
         }
         .register-btn {
-            background-color: #F4A3A8; /* Pastel pink color for register */
+            background-color: #F4A3A8; 
             border-color: #F4A3A8;
-            text-transform: uppercase; /* Make Register button text uppercase */
+            text-transform: uppercase; 
             padding: 10px 20px;
-            color: #000; /* Make text black */
-            border-radius: 10px; /* Rounded button */
+            color: #000; 
+            border-radius: 10px; 
             font-size: 1.1rem;
         }
         .navbar {
-            background-color: #FAEDCB; /* Light yellow background */
+            background-color: #FAEDCB; 
             padding: 20px;
-            /* Removed border */
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
-            border-radius: 25px; /* Rounded corners for navbar */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+            border-radius: 25px; 
             font-size: 1.2rem;
-            margin-left: 30px;  /* Add left margin */
-            margin-right: 30px; /* Add right margin */
-            margin-top: 20px;  /* Add top margin */
+            margin-left: 30px;  
+            margin-right: 30px; 
+            margin-top: 20px;  
         }
 
         .navbar-nav {
-            align-items: center; /* Align navbar items vertically */
+            align-items: center; 
         }
         .nav-item-gap {
-            margin-right: 20px; /* Add a gap between Result and Login */
+            margin-right: 20px; 
         }
         h1 {
             text-align: center;
@@ -61,15 +60,15 @@
             margin-top: 225px;
             margin-bottom: 25px;
             display: flex;
-            justify-content: center; /* Horizontally center */
-            align-items: center; /* Vertically center */
+            justify-content: center; 
+            align-items: center; 
         }
         .button-container {
             display: flex;
-            gap: 20px; /* Space between buttons */
+            gap: 20px; 
         }
         .welcome-button {
-            justify-content: center; /* Center buttons */
+            justify-content: center; 
         }
         .login2{
             background-color: #DBCDF0;

@@ -28,7 +28,7 @@ public class DeleteCompetitionServlet extends HttpServlet {
 
         int competitionId;
         try {
-            competitionId = Integer.parseInt(id); // Parse ID as an integer
+            competitionId = Integer.parseInt(id); 
         } catch (NumberFormatException e) {
             System.out.println("Invalid competition ID format: " + id);
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid competition ID format.");
@@ -42,7 +42,7 @@ public class DeleteCompetitionServlet extends HttpServlet {
         try (Connection conn = DatabaseConnection.getConnection()) {
             String sql = "DELETE FROM competition WHERE id = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setInt(1, competitionId); // Set the integer ID
+                stmt.setInt(1, competitionId); 
                 int rowsAffected = stmt.executeUpdate();
 
                 if (rowsAffected > 0) {

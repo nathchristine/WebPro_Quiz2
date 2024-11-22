@@ -94,15 +94,67 @@
     .participant-list .card {
       margin-top: 20px;
       margin-bottom: 20px;
+<<<<<<< HEAD
+=======
+    }
+
+    .btn-back i{
+      margin-right: 10px;
+    }
+
+    .back-result-container {
+      display: flex;
+      justify-content: flex-start;
+      max-width: 600px;
+      margin: 20px auto 0 auto; 
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+>>>>>>> e1bfb51d33257ec1b2baca7da0e71b0c0b26a0e5
       font-family: 'Poppins', sans-serif;
     }
     h1 {
       text-align: center;
       margin-top: 40px;
     }
+<<<<<<< HEAD
     .add-competition-container {
       display: flex;
       justify-content: flex-end;
+=======
+
+    .form-control {
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: 1px solid #ced4da;
+      margin-bottom: 15px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: #90BE6D;
+      border-color: #90BE6D;
+      color: #fff;
+      padding: 10px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #4cae4c;
+    }
+
+    .add-competition-container {
+      display: flex;
+      justify-content: flex-end; 
+>>>>>>> e1bfb51d33257ec1b2baca7da0e71b0c0b26a0e5
       margin-right: 30px;
       margin-top: 10px;
     }

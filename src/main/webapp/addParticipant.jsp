@@ -73,7 +73,7 @@
         }
 
         .btn-back i {
-            margin-right: 10px; /* Add space between the icon and text */
+            margin-right: 10px; 
         }
 
         /* Center align the Back button */
@@ -81,7 +81,7 @@
             display: flex;
             justify-content: flex-start;
             max-width: 600px;
-            margin: 20px auto 0 auto; /* Center it horizontally and add margin-top */
+            margin: 20px auto 0 auto; 
         }
     </style>
 

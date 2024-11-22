@@ -15,7 +15,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-// Servlet to handle competition-related operations
 @WebServlet("/IUPCompeList")
 public class IUPCompeListServlet extends HttpServlet {
 
@@ -23,11 +22,9 @@ public class IUPCompeListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Competition> competitions = new ArrayList<>();
 
-        // Connect to the database and fetch competition data
         try (Connection conn = DatabaseConnection.getConnection()) {
             System.out.println("Database connection successful!");
 
-            // Fetch competitions
             String sqlCompetition = "SELECT * FROM competition";
             try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sqlCompetition)) {
                 while (rs.next()) {
@@ -45,13 +42,11 @@ public class IUPCompeListServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        // Debugging: Print fetched competitions
         System.out.println("Competitions fetched:");
         for (Competition c : competitions) {
             System.out.println("ID: " + c.getId() + ", Name: " + c.getName());
         }
 
-        // Set competitions as request attribute and forward to JSP
         request.setAttribute("competitions", competitions);
         RequestDispatcher dispatcher = request.getRequestDispatcher("IUPCompeList.jsp");
         dispatcher.forward(request, response);

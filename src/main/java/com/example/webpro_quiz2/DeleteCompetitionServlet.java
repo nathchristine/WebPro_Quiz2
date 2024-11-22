@@ -11,16 +11,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-// Servlet to handle deleting a competition
 @WebServlet("/IUPCompeList/Delete")
 public class DeleteCompetitionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Get the competition ID from the request
         String id = request.getParameter("id");
 
-        // Validate ID format
         if (id == null || id.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Competition ID is missing.");
             return;
@@ -35,10 +32,8 @@ public class DeleteCompetitionServlet extends HttpServlet {
             return;
         }
 
-        // Debugging: Print the ID to be deleted
         System.out.println("Competition ID to delete: " + competitionId);
 
-        // Database deletion
         try (Connection conn = DatabaseConnection.getConnection()) {
             String sql = "DELETE FROM competition WHERE id = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -52,7 +47,6 @@ public class DeleteCompetitionServlet extends HttpServlet {
                 }
             }
 
-            // Redirect back to the competition list
             response.sendRedirect(request.getContextPath() + "/IUPCompeList");
         } catch (SQLException e) {
             System.out.println("Database error while deleting competition:");

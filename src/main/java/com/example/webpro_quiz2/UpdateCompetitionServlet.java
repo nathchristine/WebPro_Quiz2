@@ -12,13 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// Servlet for updating competition details
 @WebServlet("/IUPCompeList/Update")
 public class UpdateCompetitionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Fetch competition details by ID
         String id = request.getParameter("id");
         if (id == null || id.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Competition ID is missing.");
@@ -52,20 +50,17 @@ public class UpdateCompetitionServlet extends HttpServlet {
             return;
         }
 
-        // Check if competition was found
         if (competition == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Competition not found.");
             return;
         }
 
-        // Set competition as request attribute and forward to JSP
         request.setAttribute("competition", competition);
         request.getRequestDispatcher("/updateCompetition.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Get form parameters
         String id = request.getParameter("id");
         String name = request.getParameter("name");
         String description = request.getParameter("description");
@@ -86,11 +81,9 @@ public class UpdateCompetitionServlet extends HttpServlet {
 
                 int rowsUpdated = stmt.executeUpdate();
                 if (rowsUpdated > 0) {
-                    // Redirect to the competition list after successful update
                     response.sendRedirect(request.getContextPath() + "/IUPCompeList");
                     return;
                 } else {
-                    // If no rows were updated, competition ID doesn't exist
                     request.setAttribute("error", "Failed to update competition. Competition not found.");
                     request.getRequestDispatcher("/updateCompetition.jsp").forward(request, response);
                     return;

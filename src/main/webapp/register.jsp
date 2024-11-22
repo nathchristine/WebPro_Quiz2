@@ -10,7 +10,6 @@
     <title>Register Page</title>
 
     <style>
-        /* CSS remains unchanged */
         body {
             font-family: 'Poppins', sans-serif;
             display: flex;

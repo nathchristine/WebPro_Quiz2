@@ -6,7 +6,6 @@ public class Result {
     private int competitionId;
     private int participantId;
 
-    // Constructor
     public Result(int id, int score, int competitionId, int participantId) {
         this.id = id;
         this.score = score;
@@ -14,7 +13,6 @@ public class Result {
         this.participantId = participantId;
     }
 
-    // Getters
     public int getId() {
         return id;
     }
@@ -31,7 +29,6 @@ public class Result {
         return participantId;
     }
 
-    // Setters
     public void setId(int id) {
         this.id = id;
     }

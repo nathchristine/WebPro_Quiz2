@@ -8,7 +8,6 @@ public class Competition {
     private String description;
     private Date date;
 
-    // Constructor
     public Competition(int id, String name, String description, Date date) {
         this.id = id;
         this.name = name;
@@ -16,7 +15,6 @@ public class Competition {
         this.date = date;
     }
 
-    // Getters
     public int getId() {
         return id;
     }

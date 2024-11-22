@@ -8,7 +8,6 @@ public class Participant {
     private int competitionId;
     private String competitionName;
 
-    // Constructor
     public Participant(int id, String name, String email, String phone, int competitionId, String competitionName) {
         this.id = id;
         this.name = name;
@@ -18,7 +17,6 @@ public class Participant {
         this.competitionName = competitionName;
     }
 
-    // Getters and Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
